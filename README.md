@@ -1,2 +1,2 @@
 # Projet_8
-Projet de validation version mobile
+## To do list application in Kotlin
