@@ -23,25 +23,34 @@ fun main (){
     taskrepo.save(task1)
 
     // Exemple Supprimer
-    taskrepo.delete(1)
+    print("Give the id of the task you want delete: ")
+    val enteredID = Integer.valueOf(readLine())
+    taskrepo.delete(enteredID)
 
     // Exemple Modifier
-    println("Give the id of the task you want modify: ")
+    print("Give the id of the task you want modify: ")
     val enteredValue = Integer.valueOf(readLine())
     val updateTask = taskrepo.findById(enteredValue)
 
-    print("the task title is : ")
-    println(updateTask.title)
-    print("Modify the task here: ")
+    //print("the task title is : ")
+    //println(updateTask.title)
+    print("Modify the task title here: ")
     val enteredString = readLine()
     updateTask.title = "$enteredString"
+    print("Modify the task priority here: ")
+    val enteredInt = Integer.valueOf(readLine())
+    updateTask.title = "$enteredInt"
 
-    println(updateTask)
     taskrepo.save(updateTask)
-    println(updateTask)
+    //println(updateTask)
 
     // Exemple Afficher
     for(item in taskrepo.getAllTasks() ){
-        println(item.title )
+        print("Task infos :")
+        print(item.id)
+        print(",")
+        print(item.title)
+        print(",")
+        println(item.priority)
     }
 }
