@@ -37,9 +37,9 @@ fun main (){
     print("Modify the task title here: ")
     val enteredString = readLine()
     updateTask.title = "$enteredString"
-    print("Modify the task priority here: ")
-    val enteredInt = Integer.valueOf(readLine())
-    updateTask.title = "$enteredInt"
+//    print("Modify the task priority here: ")
+//    val enteredInt = Integer.valueOf(readLine())
+//    updateTask.priority = "$enteredInt"
 
     taskrepo.save(updateTask)
     //println(updateTask)
