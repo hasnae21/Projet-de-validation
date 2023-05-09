@@ -16,8 +16,6 @@ class TaskDao {
     }
 
 
-
-
     fun insert(taskEntry: TaskEntry){
         taskEntry.id = ++TaskDao.task_count
         TaskDao.list_tasks.add(0,taskEntry)

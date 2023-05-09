@@ -53,8 +53,8 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
             task.title = task.title + "+"
             // Todo : supprimer ces deux lignes et voir est ce que RecyclerView continue d'afficher les updates ?
-            val repository = TaskRepository()
-            repository.save(task)
+//            val repository = TaskRepository()
+//            repository.save(task)
             this.notifyDataSetChanged()
 
             // Todo : Afficher un message aprés Update

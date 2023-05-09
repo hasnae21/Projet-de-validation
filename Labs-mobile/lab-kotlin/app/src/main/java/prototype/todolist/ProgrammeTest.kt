@@ -22,27 +22,23 @@ fun main (){
     // Exemple Ajouter
     taskrepo.save(task1)
 
-    // Exemple Supprimer
-    print("Give the id of the task you want delete: ")
-    val enteredID = Integer.valueOf(readLine())
-    taskrepo.delete(enteredID)
 
     // Exemple Modifier
     print("Give the id of the task you want modify: ")
     val enteredValue = Integer.valueOf(readLine())
     val updateTask = taskrepo.findById(enteredValue)
 
-    //print("the task title is : ")
-    //println(updateTask.title)
     print("Modify the task title here: ")
     val enteredString = readLine()
     updateTask.title = "$enteredString"
-//    print("Modify the task priority here: ")
-//    val enteredInt = Integer.valueOf(readLine())
-//    updateTask.priority = "$enteredInt"
 
-    taskrepo.save(updateTask)
+    //taskrepo.save(updateTask)   had stal maxi darouri car le variable est passer par address
     //println(updateTask)
+
+    // Exemple Supprimer
+    print("Give the id of the task you want delete: ")
+    val enteredID = Integer.valueOf(readLine())
+    taskrepo.delete(enteredID)
 
     // Exemple Afficher
     for(item in taskrepo.getAllTasks() ){
