@@ -1,2 +1,6 @@
 # Projet_8
-## To do list application in Kotlin
+## Projet de validation 
+
+> labs 
+> Prototypes 
+> Réalisations
