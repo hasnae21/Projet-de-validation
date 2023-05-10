@@ -9,7 +9,7 @@ class TaskRepository () {
     fun getAllTasks() = taskDao.getAllTasks()
     fun findById(id: Int) = taskDao.findById(id)
     fun newTask(): TaskEntry {
-        return TaskEntry(0,"",0,System.currentTimeMillis())
+        return TaskEntry(0,"",1,System.currentTimeMillis())
     }
 
     fun save(taskEntry: TaskEntry) {

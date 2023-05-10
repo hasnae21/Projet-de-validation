@@ -1,24 +1,15 @@
 package prototype.todolist.ui
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import prototype.todolist.R
-import prototype.todolist.data.TaskEntry
 import prototype.todolist.data.TaskRepository
-
+import java.text.SimpleDateFormat
 
 class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
@@ -27,6 +18,9 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     class TaskViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val taskTitle: TextView = view.findViewById<Button>(R.id.taskTitle)
         val taskPriority: TextView = view.findViewById<Button>(R.id.taskPriority)
+
+        val stringArray:Array<String> = view.resources.getStringArray(R.array.priorities)
+
         val taskTimestamp: TextView = view.findViewById<Button>(R.id.taskTimestamp)
         val cardView: CardView = view.findViewById(R.id.cardview)
 
@@ -46,20 +40,29 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     override fun onBindViewHolder(taskViewHolder: TaskViewHolder, position: Int) {
         val task = this.taskRepository.getAllTasks()[position]
         taskViewHolder.taskTitle.text = task.title
-        taskViewHolder.taskPriority.text = task.priority.toString()
-        taskViewHolder.taskTimestamp.text = task.timestamp.toString()
+
+        if (task.priority === 0){
+            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[0]
+        }else if (task.priority === 1){
+            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[1]
+        }else if (task.priority === 2){
+            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[2]
+        }
+
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        taskViewHolder.taskTimestamp.text = format.format(task.timestamp)
 
         taskViewHolder.cardView.setOnClickListener {
-
-            task.title = task.title + "+"
+            //task.title = task.title + "+"
             // Todo : supprimer ces deux lignes et voir est ce que RecyclerView continue d'afficher les updates ?
-//            val repository = TaskRepository()
-//            repository.save(task)
+            val repository = TaskRepository()
+            repository.save(task)
             this.notifyDataSetChanged()
 
             // Todo : Afficher un message aprés Update
             // Toast.makeText(context,"Update $task", Toast.LENGTH_LONG).show()
         }
     }
+
 
 }

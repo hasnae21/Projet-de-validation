@@ -9,7 +9,7 @@ class TaskDao {
         init {
             for( i in 1..10){
 
-                val task = TaskEntry(++task_count,"Task $i",1,System.currentTimeMillis())
+                val task = TaskEntry(++task_count,"Task $i",0,System.currentTimeMillis())
                 list_tasks.add(0,task)
             }
         }
@@ -22,12 +22,12 @@ class TaskDao {
      }
 
      fun delete(id: Int){
-        var index = this.findIndexById(id)
+        val index = this.findIndexById(id)
          list_tasks.removeAt(index)
      }
 
      fun update(taskEntry: TaskEntry){
-         var index = this.findIndexById(taskEntry.id);
+         val index = this.findIndexById(taskEntry.id);
          TaskDao.list_tasks[index] = taskEntry
      }
 
