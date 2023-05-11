@@ -1,29 +1,27 @@
 package prototype.todolist.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import prototype.todolist.R
 import prototype.todolist.data.TaskRepository
 import java.text.SimpleDateFormat
 
-class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
-
+class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val taskRepository = TaskRepository()
     class TaskViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val taskTitle: TextView = view.findViewById<Button>(R.id.taskTitle)
         val taskPriority: TextView = view.findViewById<Button>(R.id.taskPriority)
-
-        val stringArray:Array<String> = view.resources.getStringArray(R.array.priorities)
-
         val taskTimestamp: TextView = view.findViewById<Button>(R.id.taskTimestamp)
         val cardView: CardView = view.findViewById(R.id.cardview)
-
+        val stringArray:Array<String> = view.resources.getStringArray(R.array.priorities)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -53,14 +51,15 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
         taskViewHolder.taskTimestamp.text = format.format(task.timestamp)
 
         taskViewHolder.cardView.setOnClickListener {
-            //task.title = task.title + "+"
-            // Todo : supprimer ces deux lignes et voir est ce que RecyclerView continue d'afficher les updates ?
+            task.title = task.title + "+"
+
+            // Supprimer ces deux lignes et voir est ce que RecyclerView continue d'afficher les updates ?
             val repository = TaskRepository()
             repository.save(task)
             this.notifyDataSetChanged()
 
-            // Todo : Afficher un message aprés Update
-            // Toast.makeText(context,"Update $task", Toast.LENGTH_LONG).show()
+            // Afficher un message aprés Update
+            Toast.makeText(context,"Updated task", Toast.LENGTH_LONG).show()
         }
     }
 
