@@ -1,5 +1,6 @@
 package prototype.todolist.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -35,15 +36,16 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
         return taskRepository.getAllTasks().size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(taskViewHolder: TaskViewHolder, position: Int) {
         val task = this.taskRepository.getAllTasks()[position]
         taskViewHolder.taskTitle.text = task.title
 
-        if (task.priority === 0){
+        if (task.priority == 0){
             taskViewHolder.taskPriority.text = taskViewHolder.stringArray[0]
-        }else if (task.priority === 1){
+        }else if (task.priority == 1){
             taskViewHolder.taskPriority.text = taskViewHolder.stringArray[1]
-        }else if (task.priority === 2){
+        }else if (task.priority == 2){
             taskViewHolder.taskPriority.text = taskViewHolder.stringArray[2]
         }
 
