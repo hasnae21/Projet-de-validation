@@ -60,14 +60,14 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
             task.title = task.title + "+"
 
             // Supprimer ces deux lignes et voir est ce que RecyclerView continue d'afficher les updates ?
-            //le titre est modifier a cause de la ligne 58
-
+            //le titre est modifier a cause de la ligne 60
             //val repository = TaskRepository()
             //repository.save(task)
-            //this.notifyDataSetChanged()
+
+            this.notifyDataSetChanged()
 
             // Afficher un message aprés Update
-            Toast.makeText(context,"Updated task", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"Task updated", Toast.LENGTH_LONG).show()
         }
 
     }
