@@ -1,35 +1,30 @@
 package prototype.todolist.ui
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import prototype.todolist.R
 import prototype.todolist.data.TaskRepository
-import java.text.SimpleDateFormat
 
-//class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+
 class TaskAdapter(navController: NavController) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val taskRepository = TaskRepository()
-
     private val navController = navController
 
-    class TaskViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
+    class TaskViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val taskTitle: TextView = view.findViewById<Button>(R.id.taskTitle)
         val taskPriority: TextView = view.findViewById<Button>(R.id.taskPriority)
         val taskTimestamp: TextView = view.findViewById<Button>(R.id.taskTimestamp)
         val cardView: CardView = view.findViewById(R.id.cardview)
-        val stringArray:Array<String> = view.resources.getStringArray(R.array.priorities)
-    }
 
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val layout = LayoutInflater
@@ -39,40 +34,20 @@ class TaskAdapter(navController: NavController) : RecyclerView.Adapter<TaskAdapt
     }
 
     override fun getItemCount(): Int {
-        return taskRepository.getAllTask().size
+        return taskRepository.getAllTasks().size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(taskViewHolder: TaskViewHolder, position: Int) {
-        val task = this.taskRepository.getAllTask()[position]
+        val task = this.taskRepository.getAllTasks()[position]
         taskViewHolder.taskTitle.text = task.title
-
-        if (task.priority == 0){
-            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[0]
-        }
-        else if (task.priority == 1){
-            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[1]
-        }
-        else if (task.priority == 2){
-            taskViewHolder.taskPriority.text = taskViewHolder.stringArray[2]
-        }
-
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        taskViewHolder.taskTimestamp.text = format.format(task.timestamp)
+        taskViewHolder.taskPriority.text = task.priority.toString()
+        taskViewHolder.taskTimestamp.text = task.timestamp.toString()
 
         taskViewHolder.cardView.setOnClickListener {
-
-            //task.title = task.title + "+"
-            // rederiger vers form
+            // update
             val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToTaskFormFragment(taskid = task.id )
             navController.navigate(action)
-
-
-            this.notifyDataSetChanged()
-
-            //Toast.makeText(context,"Task updated", Toast.LENGTH_LONG).show()
         }
-
     }
 
 }

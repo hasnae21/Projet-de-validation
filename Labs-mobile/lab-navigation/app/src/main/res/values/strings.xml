@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Labs_liveCoding</string>
+    <string name="app_name">Todo list</string>
     <string name="search">Search</string>
     <string name="sort_by_high_priority">Sort by High Priority</string>
     <string name="enter_task">Enter Task</string>
@@ -11,8 +11,4 @@
         <item>Medium Priority</item>
         <item>Low Priority</item>
     </string-array>
-<!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
-    <string name="tasks_fragment">Tasks list</string>
-    <string name="forms_fragment">Task managment</string>
-
 </resources>
