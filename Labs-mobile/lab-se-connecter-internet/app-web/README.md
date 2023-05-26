@@ -66,8 +66,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Commandes
+composer i
 ipConfig
-php artisan serve
 php artisan migrate
 php artisan db:seed
-php artisan host 0.0.0
+ou
+php artisan migrate:fresh --seed
+php artisan serve --host 0.0.0.0
+php artisan serve --host 192.168.2.14
+
+

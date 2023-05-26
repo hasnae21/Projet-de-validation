@@ -23,9 +23,12 @@ import prototype.todolist.models.Task
 import prototype.todolist.utils.Status
 
 
-class TaskManagerFragment : BaseFragment<FragmentTaskManagerBinding>(FragmentTaskManagerBinding::inflate) {
+class  TaskManagerFragment : BaseFragment<FragmentTaskManagerBinding>(FragmentTaskManagerBinding::inflate) {
 
-    private val viewModel: TaskViewModel by viewModels()
+//    private val viewModel: TaskViewModel = TaskViewModel()
+private val viewModel: TaskViewModel by viewModels()
+
+    //    by viewModels()
     private lateinit var adapter: TaskRecyclerViewAdapter
 
     override fun init(view: View) {

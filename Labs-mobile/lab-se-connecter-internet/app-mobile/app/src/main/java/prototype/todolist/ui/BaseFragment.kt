@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-
 typealias Inflater<T> = (inflater: LayoutInflater, view: ViewGroup?, attach: Boolean) -> T
 
 abstract class BaseFragment<VB: ViewBinding>(private val inflater: Inflater<VB>) : Fragment() {
@@ -39,7 +38,6 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflater: Inflater<VB>)
 
     protected open fun observers() {}
 
-
     fun setProgressBar(resId: Int) {
         progressBar = view?.findViewById(resId)
     }
@@ -51,7 +49,6 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflater: Inflater<VB>)
     fun hideProgressBar() {
         progressBar?.visibility = View.INVISIBLE
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -65,51 +62,3 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflater: Inflater<VB>)
     }
 
 }
-
-
-//
-//typealias Inflater<T> = (inflater: LayoutInflater, view: ViewGroup?, attach: Boolean) -> T
-//
-//abstract class BaseFragment<VBinding : ViewBinding, VModel : ViewModel>(private val inflater: Inflater<VB>) : Fragment() {
-//
-
-//
-//
-////    protected lateinit var viewModel: VModel
-////    protected abstract fun getViewModelClass(): Class<ViewModel>
-//
-//    protected lateinit var binding: VBinding
-//    protected abstract fun getViewBinding(): VBinding
-//
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        init()
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        setUpViews(view)
-//        observeData()
-//    }
-//
-//    open fun setUpViews(view: View) {}
-//
-//    open fun observeView() {}
-//
-//    open fun observeData() {}
-//
-//    private fun init() {
-//        binding = getViewBinding()
-////        viewModel = ViewModelProvider(this).get(getViewModelClass()) as VModel
-//    }
-
-//}

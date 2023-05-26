@@ -57,6 +57,4 @@ class TaskRecyclerViewAdapter(private val tasks: ArrayList<Task>, navController:
         }
 
     }
-
-
 }

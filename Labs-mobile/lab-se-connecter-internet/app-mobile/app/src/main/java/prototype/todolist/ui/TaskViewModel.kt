@@ -7,7 +7,7 @@ import prototype.todolist.models.Task
 import prototype.todolist.repositoryies.TasksRepository
 import prototype.todolist.utils.Resource
 
-class TaskViewModel : ViewModel()  {
+class TaskViewModel {
 
     private val tasksRepository = TasksRepository()
 
