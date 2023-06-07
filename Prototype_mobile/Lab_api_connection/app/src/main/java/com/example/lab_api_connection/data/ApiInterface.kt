@@ -6,14 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiInterface {
-
-//    @GET("https://api.dictionaryapi.dev/api/v2/entries/en/hello")
-
-    suspend fun getDataFrmDictionary(
-
+    @GET("{word}")
+    suspend fun getDataFromDictionary(
         @Query("word") word: String,
-
     ):Response<CurrentDictionary>
 
-//    abstract fun getDataFromDictionary(s: String): Nothing
 }
