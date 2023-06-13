@@ -1,30 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-function Example() {
+const Example = ({ mean }) => {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
-
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
+        <div>
+            {mean.map(val => val.meanings.map(means => means.definitions.map((def) => (
+                <div key={def.example}>
+                    {def.example ? <li>{def.example}</li> : ''}
                 </div>
-            </div>
+            ))))}
         </div>
     );
-}
+};
 
 export default Example;
-
-if (document.getElementById('example')) {
-    const Index = ReactDOM.createRoot(document.getElementById("example"));
-
-    Index.render(
-        <React.StrictMode>
-            <Example/>
-        </React.StrictMode>
-    )
-}
