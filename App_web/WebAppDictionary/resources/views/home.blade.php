@@ -15,9 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="container" id="app"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+        <!-- @viteReactRefresh
+        @vite(['resources/sass/app.scss', 'resources/js/index.jsx']) -->
 @endsection

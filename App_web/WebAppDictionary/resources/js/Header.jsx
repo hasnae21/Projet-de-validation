@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { InputContext } from "../App";
+import { InputContext } from "./App";
 
 const Header = () => {
     const [value, setValue] = useState("");
@@ -22,7 +22,7 @@ const Header = () => {
     return (
         <div className="mt-5">
             <input
-                className="px-5 py-3 pr-12 text-base  md:w-80 rounded-lg rounded-full  border-none bg-white ps-4 text-lg shadow-lg block w-full"
+                className="px-5 py-3 pr-12 text-base md:w-80 rounded-lg rounded-full  border-none bg-white ps-4 text-lg shadow-lg block w-full"
                 id="search"
                 type="search"
                 placeholder="Chercher un mot d'ici..."
@@ -32,9 +32,9 @@ const Header = () => {
             />
             <button onClick={handleSubmit}></button>
             {inputValue && (
-                <h3 className="px-4 text-black-50 mt-4">Result for:
+                <h1 className="px-4 text-black-50 mt-4">
                     <span className="font-bold">{inputValue}</span>
-                </h3>
+                </h1>
             )}
         </div>
     );

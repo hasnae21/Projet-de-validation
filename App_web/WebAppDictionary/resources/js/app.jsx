@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
-import Header from "./components/Header";
-import ResultList from "./components/ResultList";
+import Header from "./Header";
+import ResultList from "./ResultList";
 
 export const InputContext = createContext();
 
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <InputContext.Provider value={value}>
-      <div className="App">
+      <div>
             <Header />
             <ResultList />
       </div>
