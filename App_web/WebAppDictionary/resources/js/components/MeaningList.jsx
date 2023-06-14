@@ -1,35 +1,24 @@
-// const MeaningList = ({ mean }) => {
-//     return (
-//         <div>
-//             {mean.map(val => (
-//                 <div key={val.partOfSpeech}>
-//                     <h3 key={val.partOfSpeech}>{val.partOfSpeech}</h3>
-//                     {val.definitions?.map(def => (
-//                         <div key={def.definition}>
-//                             <li key={def.definition} >{def.definition}</li>
-//                             <hr />
-//                         </div>
-//                     ))}
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default MeaningList;
-
-
 const MeanigList = ({ mean }) => {
-    return (
-      <div>
-        {mean.map(val => val.meanings.map(means => means.definitions.map(def => (
-          <div key={def.definition}>
-            <li>{def.definition}</li>
-            <hr />
-          </div>
-        ))))}
-      </div>
-    );
-  };
-  
-  export default MeanigList;
+
+  return (
+    <div>
+      {mean.map((val, index) => (
+        <div><h4 key={index}>{val.partOfSpeech}</h4><hr /><div>
+          {val.definitions.map((vals, index1) => (
+            <div key={index1}><p>- {vals.definition}</p></div>
+          ))}
+          {/* {val.synonyms.map((syn, index2) => (
+            <div key={index2}><li>{syn.synonyms}</li></div>
+          ))}
+          {val.antonyms.map((ant, index3) => (
+            <div key={index3}><li>{ant.antonyms}</li></div>
+          ))} */}
+        </div>
+        </div>
+      ))}
+    </div>
+
+  );
+};
+
+export default MeanigList;

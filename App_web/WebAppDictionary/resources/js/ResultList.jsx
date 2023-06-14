@@ -14,12 +14,17 @@ const ResultList = () => {
     const [response, setResponse] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [meanings, setMeanings] = useState("");
+    
+
 
     const fetchData = async (param) => {
         try {
             setLoading(true);
             const res = await axios(`/${param}`);
             setResponse(res.data);
+            setMeanings(res.data[0].meanings);
+            // console.log(res.data[0].meanings )
             setError(null);
         } catch (err) {
             setError(err);
@@ -57,7 +62,7 @@ const ResultList = () => {
                     <h3 className="text-2xl font-bold mt-4">Phonetic:</h3>
                     <Phonetics mean={response} />
                     <h3 className="text-2xl font-bold mt-4">Definitions:</h3>
-                    <MeaningList mean={response} />
+                    <MeaningList mean={meanings} />
                     <h3 className="text-2xl font-bold mt-4">Examples:</h3>
                     <Example mean={response} />
                     <h3 className="text-2xl font-bold mt-4">Synonymes:</h3>
