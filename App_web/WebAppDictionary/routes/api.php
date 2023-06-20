@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+use App\Http\Controllers\API\WordController;
+
+// Les routes "users.*" de l'API
+
+// Route::post('/login', [AuthController::class,'login']);
+// Route::post('/register',[AuthController::class,'register']);
+// Route::get('users',[AuthController::class,'users']);
+// Route::post('logout',[AuthController::class,'logout']);
+

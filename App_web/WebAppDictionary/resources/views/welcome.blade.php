@@ -879,11 +879,11 @@
     </style>
 </head>
 
-<body> 
+<body>
     <div class="container" id="app">
         @yield('content')
     </div>
-
+    <a href="{{ route('save-api-data') }}" class="btn btn-primary">Save API Data</a>
     <!-- Scripts -->
     @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/index.jsx'])

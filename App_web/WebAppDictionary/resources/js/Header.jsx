@@ -21,6 +21,7 @@ const Header = () => {
 
     return (
         <div className="mt-5">
+            <button onClick={handleSubmit}>
             <input
                 className="px-5 py-3 pr-12 text-base md:w-80 rounded-lg rounded-full  border-none bg-white ps-4 text-lg shadow-lg block w-full"
                 id="search"
@@ -30,7 +31,7 @@ const Header = () => {
                 value={value}
                 onKeyDown={handleInputKeyDown}
             />
-            <button onClick={handleSubmit}></button>
+            </button>
             {inputValue && (
                 <h1 className="px-4 text-black-50 mt-4">
                     <span className="font-bold">{inputValue}</span>

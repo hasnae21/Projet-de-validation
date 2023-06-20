@@ -1,8 +1,8 @@
 <?php
-  
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
-  
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +27,8 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+use App\Http\Controllers\API\WordController;
+
+//Route::get('/favory', [WordController::class,'getFavory']);
+Route::post('/save-api-data',  [WordController::class, 'saveApiData'])->name('save-api-data');
