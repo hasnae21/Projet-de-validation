@@ -32,6 +32,9 @@ const Header = () => {
                 onKeyDown={handleInputKeyDown}
             />
             </button>
+
+            {/* <a href="{{route("save-api-data")}}" class="btn btn-primary">Save API Data</a> */}
+
             {inputValue && (
                 <h1 className="px-4 text-black-50 mt-4">
                     <span className="font-bold">{inputValue}</span>

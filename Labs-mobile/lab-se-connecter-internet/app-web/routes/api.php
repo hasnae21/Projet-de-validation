@@ -21,17 +21,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\TaskController;
 
 
- // Route::apiResource("tasks", TaskController::class); // Les routes "users.*" de l'API
-
-
-Route::get('/tasks/find_all/', [TaskController::class, 'findAll']);
 Route::get('/tasks/find_by_id/{id}', [TaskController::class, 'findById']);
-Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
 Route::post('/tasks', [TaskController::class, 'store']);
-Route::match(['put', 'patch'], '/tasks/{task}',[TaskController::class, 'update']);
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
 
-// Route::post('/tasks', [TaskController::class, 'store']);
-// Route::get('/tasks', [TaskController::class, 'index']);
-// Route::put('/tasks/complete', [TaskController::class, 'complete']);
-// Route::delete('/tasks/{task}', [TaskController::class, 'delete']);
-// Route::get('/tasks/filter', [TaskController::class, 'filter']);
+
+
+
+Route::match(['put', 'patch'], '/tasks/{task}',[TaskController::class, 'update']);
+Route::get('/tasks/find_all/', [TaskController::class, 'findAll']);
+

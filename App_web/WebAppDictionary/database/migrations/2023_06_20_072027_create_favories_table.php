@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('favories', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger("word_id")->unsigned()->nullable();
+            $table->bigInteger("word_id")->unsigned();
             $table->foreign("word_id")
                 ->references("id")
                 ->on('words')
                 ->onDelete('cascade');
 
-            $table->bigInteger("user_id")->unsigned()->nullable();
+            $table->bigInteger("user_id")->unsigned();
             $table->foreign("user_id")
                 ->references("id")
                 ->on('users')
