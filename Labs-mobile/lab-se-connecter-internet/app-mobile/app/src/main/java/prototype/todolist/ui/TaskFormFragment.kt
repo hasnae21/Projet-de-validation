@@ -20,19 +20,14 @@ class TaskFormFragment : BaseFragment<FragmentTaskFormBinding>(FragmentTaskFormB
         val TASKID = "taskid" // Il resemble à une variable static
     }
 
-//    private val viewModel: TaskViewModel = TaskViewModel()
-//    by viewModels()
-private val viewModel: TaskViewModel by viewModels()
-
-    private var taskId =  0 // La valeur 0 signifie que le formulaire est dans l'état d'insertion
+    private val viewModel: TaskViewModel = TaskViewModel()
+    private var taskId =  0
     private  var task : Task? = null
-
     override fun init(view: View) {
 
         arguments?.let {
             taskId = it.getInt(TASKID)
         }
-
         this.setProgressBar(R.id.progressBar)
 
         // Add
@@ -44,7 +39,6 @@ private val viewModel: TaskViewModel by viewModels()
         // Update
         else
         {
-
             // Call : FindById
             viewModel.findById(taskId).observe(viewLifecycleOwner, Observer {
                 when (it.status) {

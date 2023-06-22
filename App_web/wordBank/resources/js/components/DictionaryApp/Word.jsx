@@ -66,6 +66,18 @@ const Word = ({ word, phonetic, audio }) => {
   //   }
   // };
 
+  const getUserId = () => {
+    axios.get('/api/user', {
+      withCredentials: true,
+    }).then(response => {
+
+      return userId = response.data;
+
+    }).catch(error => {
+      console.error(error);
+    });
+  }
+
 
   const handleAdd = async (event) => {
     event.preventDefault();

@@ -25,10 +25,7 @@ import prototype.todolist.utils.Status
 
 class  TaskManagerFragment : BaseFragment<FragmentTaskManagerBinding>(FragmentTaskManagerBinding::inflate) {
 
-//    private val viewModel: TaskViewModel = TaskViewModel()
-private val viewModel: TaskViewModel by viewModels()
-
-    //    by viewModels()
+    private val viewModel: TaskViewModel = TaskViewModel()
     private lateinit var adapter: TaskRecyclerViewAdapter
 
     override fun init(view: View) {
@@ -38,7 +35,6 @@ private val viewModel: TaskViewModel by viewModels()
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter =  adapter
         }
-
         // getUsers observe
         viewModel.getTasks().observe(viewLifecycleOwner, Observer {
             when (it.status) {
@@ -56,7 +52,6 @@ private val viewModel: TaskViewModel by viewModels()
         })
 
     }
-
     override fun listeners(view: View) {
         binding.apply {
             floatingActionButton.setOnClickListener{
@@ -65,13 +60,7 @@ private val viewModel: TaskViewModel by viewModels()
             }
         }
     }
-
-
-    // Todo : Implémentez le code du button Ajouter une tâche dans le menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.layout_menu, menu)
     }
-
-
-
 }

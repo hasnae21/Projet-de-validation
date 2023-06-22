@@ -1,19 +1,21 @@
-import React from "react";
-import DictionaryApp from "./components";
-import Favorites from "./FavoriteApp";
+import './bootstrap';
+import '../css/app.css';
 
+import { createRoot } from 'react-dom/client';
+import { createInertiaApp } from '@inertiajs/react';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-const App = () => {
-  return (
-    <div className="flex flex-row">
-      <div className="w-1/5">
-        <Favorites />
-      </div>
-      <div className="w-4/5">
-        <DictionaryApp />
-      </div>
-    </div>
-  );
-};
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-export default App;
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
+    setup({ el, App, props }) {
+        const root = createRoot(el);
+
+        root.render(<App {...props} />);
+    },
+    progress: {
+        color: '#4B5563',
+    },
+});

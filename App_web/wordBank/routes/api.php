@@ -16,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user()->id;
+});
 
 Route::post('login',[FavoriteController::class,'verifyUser']);
 
-Route::get('/favorites/{id}',[FavoriteController::class,'findById']);
-Route::post('/favorites/{id}',[FavoriteController::class,'store']);
-Route::delete('/favorites/{id}',[FavoriteController::class,'destroy']);
+Route::get('favorites/{id}',[FavoriteController::class,'findById']);
+Route::post('favorites/{id}',[FavoriteController::class,'store']);
+Route::delete('favorites/{id}',[FavoriteController::class,'destroy']);
 
-Route::get('/favorites/getDuplicateWords',[FavoriteController::class,'getDuplicateWords']);
+Route::get('favorites/getDuplicateWords',[FavoriteController::class,'getDuplicateWords']);
